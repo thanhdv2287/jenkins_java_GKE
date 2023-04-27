@@ -10,6 +10,10 @@ pipeline {
         Name = readMavenPom().getName()
         dockerimagename = "10.2.0.6:9001/repository/mylab-docker-hub/tomcat"
         dockerImage = "10.2.0.6:9001/repository/mylab-docker-hub"
+    PROJECT_ID = 'thanhdv-lap'
+    CLUSTER_NAME = 'cluster-1'
+    LOCATION = 'us-central1-b'
+    CREDENTIALS_ID = 'thanhdv-lap'
     }
     stages {
         stage('Build') {
@@ -79,26 +83,11 @@ pipeline {
         }
       }
     }
-        stage('Deploy to Docker') {
-            steps {
-                echo 'Deploying...'
-                sshPublisher(publishers: 
-                [sshPublisherDesc(
-                    configName: 'ansible-controller', 
-                    transfers: [
-                        sshTransfer(
-                            sourceFiles: 'download-deploy.yaml, hosts',
-                            remoteDirectory: '/playbooks',
-                            cleanRemote: false,
-                            execCommand: 'cd playbooks/ && ansible-playbook download-deploy.yaml -i hosts', 
-                            execTimeout: 120000, 
-                        )
-                    ], 
-                    usePromotionTimestamp: false, 
-                    useWorkspaceInPromotion: false, 
-                    verbose: false)
-                ])
+    stage('Deploying App to Kubernetes') {
+      steps{
+        sh "sed -i 's/nodeapp:latest/nodeapp:${env.BUILD_ID}/g' deploymentservice.yml"
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deploymentservice.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
-        }
+    }
     }
 }
