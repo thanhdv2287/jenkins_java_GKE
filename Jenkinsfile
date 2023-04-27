@@ -62,6 +62,19 @@ pipeline {
         }
       }
     }
+        stage('Pushing Image') {
+      environment {
+               registryCredential = 'dockerhublogin'
+           }
+      steps{
+        script {
+          docker.withRegistry( 'http://10.2.0.6:9001/repository/mylab-docker-hub/tomcat', registryCredential ) {
+            dockerImage.push("latest")
+            dockerImage.push("${ArtifactId}-${Version}")
+          }
+        }
+      }
+    }
         stage('Deploy to Docker') {
             steps {
                 echo 'Deploying...'
