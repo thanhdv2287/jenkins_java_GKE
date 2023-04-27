@@ -72,7 +72,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( '10.2.0.6:9001/repository/mylab-docker-hub', registryCredential ) {
+          docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
         }
