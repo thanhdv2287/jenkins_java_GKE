@@ -8,6 +8,7 @@ pipeline {
         Version = readMavenPom().getVersion()
         GroupId = readMavenPom().getGroupId()
         Name = readMavenPom().getName()
+        dockerimagename = 10.2.0.6:9001/repository/mylab-docker-hub/tomcat
     }
     stages {
         stage('Build') {
@@ -53,6 +54,14 @@ pipeline {
                 echo "Name is '${Name}'"
             }
         }
+        stage('Build image') {
+      steps{
+        script {
+          shell: 'curl -u admin:123456 -L "http://10.2.0.6:8081/service/rest/v1/search/assets/download?sort=version&repository=MyLab-RELEASE&maven.groupId=com.mylab&maven.artifactId=MyLab&maven.extension=war" -H "accept: application/json" --output ROOT.war'
+          dockerImage = docker.build dockerimagename
+        }
+      }
+    }
         stage('Deploy to Docker') {
             steps {
                 echo 'Deploying...'
