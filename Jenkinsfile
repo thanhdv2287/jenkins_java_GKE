@@ -73,7 +73,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'http://10.2.0.6:9001/repository/mylab-docker-hub', registryCredential ) {
-            dockerImage.push("latest")
+            dockerImage.push()
               dockerImage.push("${ArtifactId}-${Version}")
           }
         }
