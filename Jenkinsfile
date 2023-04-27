@@ -9,7 +9,7 @@ pipeline {
         GroupId = readMavenPom().getGroupId()
         Name = readMavenPom().getName()
         dockerimagename = "10.2.0.6:9001/repository/mylab-docker-hub/tomcat"
-        dockerImage = ""
+        dockerImage = "10.2.0.6:9001/repository/mylab-docker-hub"
     }
     stages {
         stage('Build') {
