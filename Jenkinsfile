@@ -57,7 +57,7 @@ pipeline {
         stage('Build image') {
       steps{
         script {
-          shell: 'curl -u admin:123456 -L "http://10.2.0.6:8081/service/rest/v1/search/assets/download?sort=version&repository=MyLab-RELEASE&maven.groupId=com.mylab&maven.artifactId=MyLab&maven.extension=war" -H "accept: application/json" --output ROOT.war'
+          curl -u admin:123456 -L "http://10.2.0.6:8081/service/rest/v1/search/assets/download?sort=version&repository=MyLab-RELEASE&maven.groupId=com.mylab&maven.artifactId=MyLab&maven.extension=war" -H "accept: application/json" --output ROOT.war
           dockerImage = docker.build dockerimagename
         }
       }
