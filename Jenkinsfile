@@ -8,8 +8,8 @@ pipeline {
         Version = readMavenPom().getVersion()
         GroupId = readMavenPom().getGroupId()
         Name = readMavenPom().getName()
-        dockerimagename = "10.2.0.6:9001/repository/mylab-docker-hub/tomcat"
-        dockerImage = "10.2.0.6:9001/repository/mylab-docker-hub"
+        dockerimagename = "35.208.77.17:9001/repository/mylab-docker-hub/tomcat"
+        dockerImage = "35.208.77.17:9001/repository/mylab-docker-hub"
     PROJECT_ID = 'thanhdv-lap'
     CLUSTER_NAME = 'cluster-2'
     LOCATION = 'us-central1-b'
@@ -76,7 +76,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'http://10.2.0.6:9001/repository/mylab-docker-hub', registryCredential ) {
+          docker.withRegistry( 'http://35.208.77.17:9001/repository/mylab-docker-hub', registryCredential ) {
             dockerImage.push()
               dockerImage.push("${ArtifactId}-${Version}")
           }
