@@ -11,7 +11,7 @@ pipeline {
         dockerimagename = "10.2.0.6:9001/repository/mylab-docker-hub/tomcat"
         dockerImage = "10.2.0.6:9001/repository/mylab-docker-hub"
     PROJECT_ID = 'thanhdv-lap'
-    CLUSTER_NAME = 'cluster-1'
+    CLUSTER_NAME = 'cluster-2'
     LOCATION = 'us-central1-b'
     CREDENTIALS_ID = 'thanhdv-lap'
     }
