@@ -85,7 +85,7 @@ pipeline {
     }
     stage('Deploying App to Kubernetes') {
       steps{
-        sh "sed -i 's/tomcat:latest/tomcat:${ArtifactId}-${Version}/g' deploymentservice.yml"
+        sh "sed -i 's/latest/${ArtifactId}-${Version}/g' deploymentservice.yml"
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deploymentservice.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
     }
