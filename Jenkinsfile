@@ -12,7 +12,7 @@ pipeline {
         dockerImage = "10.2.0.6:9001/repository/mylab-docker-hub"
     PROJECT_ID = 'thanhdv-lap'
     CLUSTER_NAME = 'cluster-1'
-    LOCATION = 'us-central1-b'
+    LOCATION = 'us-central1'
     CREDENTIALS_ID = 'thanhdv-lap'
     }
     stages {
