@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcatapp-deployment
+  labels:
+    app: tomcatapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tomcatapp
+  template:
+    metadata:
+      labels:
+        app: tomcatapp 
+    spec:
+      containers:
+      - name: tomcatapp-server
+        image: 10.2.0.6:9001/repository/mylab-docker-hub/tomcat:latest
+        ports:
+        - containerPort: 3000
+        
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcatapp-service
+spec:
+  selector:
+    app: tomcatapp 
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+    nodePort: 31110
