@@ -61,34 +61,5 @@ pipeline {
 
             }
         }
-        stage('Build image') {
-      steps{
-          sh '''#!/bin/bash
-          curl -u admin:123456 -L "http://10.2.0.6:8081/repository/'${NexusRepo}'/com/mylab/'${ArtifactId}'/'${Version}'/'${ArtifactId}'-'${Version}'.war" -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT.war
-                '''
-        script {
-          dockerImage = docker.build dockerimagename
-        }
-      }
-    }
-        stage('Pushing Image') {
-      environment {
-               registryCredential = 'dockerhublogin'
-           }
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-              dockerImage.push("${Version}")
-          }
-        }
-      }
-    }
-    stage('Deploying App to Kubernetes') {
-      steps{
-        sh "sed -i 's/latest/${Version}/g' deploymentservice.yml"
-                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deploymentservice.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
-            }
-    }
-    }
+        
 }
