@@ -8,7 +8,7 @@ pipeline {
         Version = readMavenPom().getVersion()
         GroupId = readMavenPom().getGroupId()
         Name = readMavenPom().getName()
-        dockerimagename = "mrsudo/tomcat"
+        dockerimagename = "mrsudo/tomcat1"
         dockerImage = ""
     PROJECT_ID = 'thanhdv-lap'
     CLUSTER_NAME = 'cluster-2'
