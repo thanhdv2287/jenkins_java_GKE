@@ -57,13 +57,14 @@ pipeline {
                 echo "Group ID is '${GroupId}'"
                 echo "Version is '${Version}'"
                 echo "Name is '${Name}'"
+                echo "http://10.2.0.6:8081/repository/'${NexusRepo}'/com/mylab/'${ArtifactId}'/'${Version}'/'${ArtifactId}'-'${Version}'.war"
+
             }
         }
         stage('Build image') {
       steps{
-          echo "http://10.2.0.6:8081/repository/${NexusRepo}/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war"
           sh '''#!/bin/bash
-          curl -u admin:123456 -L "http://10.2.0.6:8081/repository/${NexusRepo}/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war" -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT.war
+          curl -u admin:123456 -L "http://10.2.0.6:8081/repository/'${NexusRepo}'/com/mylab/'${ArtifactId}'/'${Version}'/'${ArtifactId}'-'${Version}'.war" -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT.war
                 '''
         script {
           dockerImage = docker.build dockerimagename
