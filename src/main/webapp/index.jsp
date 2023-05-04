@@ -52,7 +52,7 @@
 <div class="jumbotron">
     <div class="container">
         <h1>Hello dvthanh2 </h1>
-        <p>This is Minhung's CICD Lab</p>
+        <p>This is dvthanh2's CICD Lab</p>
         <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg" role="button">Success!! more &raquo;</a></p>
     </div>
@@ -91,7 +91,7 @@
     <hr>
 
     <footer>
-        <p>&copy; holdennguyen</p>
+        <p>&copy; dvthanh2</p>
     </footer>
 </div> <!-- /container -->
 
