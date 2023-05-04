@@ -57,7 +57,7 @@ pipeline {
                 echo "Group ID is '${GroupId}'"
                 echo "Version is '${Version}'"
                 echo "Name is '${Name}'"
-
+                echo "http://10.2.0.6:8081/repository/${NexusRepo}/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war"
             }
         }
         stage('Build image') {
