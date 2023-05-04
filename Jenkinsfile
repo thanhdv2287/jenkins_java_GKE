@@ -8,7 +8,7 @@ pipeline {
         Version = readMavenPom().getVersion()
         GroupId = readMavenPom().getGroupId()
         Name = readMavenPom().getName()
-        dockerimagename = "mrsudo/tomcat1"
+        dockerimagename = "mrsudo/tomcat"
         dockerImage = ""
     PROJECT_ID = 'thanhdv-lap'
     CLUSTER_NAME = 'cluster-2'
@@ -61,9 +61,10 @@ pipeline {
         }
         stage('Build image') {
       steps{
-          echo "http://10.2.0.6:8081/service/rest/v1/search/assets/download?sort=version&repository=MyLab-RELEASE&maven.groupId=com.mylab&maven.artifactId=MyLab&maven.extension=war"
+          echo http://10.2.0.6:8081/service/rest/v1/search/assets/download?sort=version&repository=MyLab-RELEASE&maven.groupId=com.mylab&maven.artifactId=MyLab&maven.extension=war
+          echo  http://10.2.0.6:8081/repository/${NexusRepo}/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war
           sh '''#!/bin/bash
-          curl -u admin:123456 -L "http://10.2.0.6:8081/service/rest/v1/search/assets/download?sort=version&repository=MyLab-RELEASE&maven.groupId=com.mylab&maven.artifactId=MyLab&maven.extension=war" -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT.war
+          curl -u  http://10.2.0.6:8081/repository/${NexusRepo}/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT.war
 
                 '''
         script {
