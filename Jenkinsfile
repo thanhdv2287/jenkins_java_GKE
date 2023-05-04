@@ -57,7 +57,7 @@ pipeline {
                 echo "Group ID is '${GroupId}'"
                 echo "Version is '${Version}'"
                 echo "Name is '${Name}'"
-                echo "${NexusRepo} ${ArtifactId} ${Version} ${ArtifactId} ${Version}"
+                echo "${ArtifactId} ${Version} ${ArtifactId} ${Version}"
             }
         }
         stage('Build image') {
