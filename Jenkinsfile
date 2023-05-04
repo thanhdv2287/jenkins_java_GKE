@@ -76,7 +76,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry( '10.2.0.6:9001', registryCredential ) {
             dockerImage.push()
               dockerImage.push("${Version}")
           }
