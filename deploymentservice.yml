@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: tomcatapp-server
-        image: 10.2.0.6:9001/10.2.0.6:latest
+        image: 35.208.77.17:9001/tomcat:latest
         ports:
         - containerPort: 8080
         
