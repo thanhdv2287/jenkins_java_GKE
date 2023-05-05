@@ -8,7 +8,7 @@ pipeline {
         Version = readMavenPom().getVersion()
         GroupId = readMavenPom().getGroupId()
         Name = readMavenPom().getName()
-        dockerimagename = "10.2.0.6:9001/tomcat"
+        dockerimagename = "35.208.77.17:9001/tomcat"
         dockerImage = ""
     PROJECT_ID = 'thanhdv-lap'
     CLUSTER_NAME = 'cluster-2'
@@ -76,7 +76,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'http://10.2.0.6:9001', registryCredential ) {
+          docker.withRegistry( 'http://35.208.77.17:9001', registryCredential ) {
             dockerImage.push()
               dockerImage.push("${Version}")
           }
