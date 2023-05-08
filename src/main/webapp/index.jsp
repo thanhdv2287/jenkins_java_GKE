@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>dvthanh2's DevOps Lab</title>
+    <title>dvthanh2's DevOps Labbbbbb</title>
 
 
     <!-- Custom styles for this template -->
