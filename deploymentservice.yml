@@ -16,6 +16,13 @@ spec:
     spec:
       imagePullSecrets:
       - name: gcr-json-key
+          <!--Create gcr-json-key in Kubenetes controller with command
+      kubectl create secret docker-registry gcr-json-key \
+ --docker-server=nexus.vnext.vn:8082 \
+ --docker-username=admin \
+ --docker-password=123456 \
+ --docker-email=thanhdv2287@gmail.com-->
+ 
       containers:
       - name: tomcatapp-server
         image: nexus.vnext.vn:8082/nexus.vnext.vn:latest
