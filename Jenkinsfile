@@ -8,7 +8,7 @@ pipeline {
         Version = readMavenPom().getVersion()
         GroupId = readMavenPom().getGroupId()
         Name = readMavenPom().getName()
-        dockerimagename = "35.208.77.17:9001/tomcat"
+        dockerimagename = "nexus.vnext.vn:8082/tomcat"
         dockerImage = ""
     PROJECT_ID = 'thanhdv-lap'
     CLUSTER_NAME = 'cluster-2'
@@ -57,13 +57,13 @@ pipeline {
                 echo "Group ID is '${GroupId}'"
                 echo "Version is '${Version}'"
                 echo "Name is '${Name}'"
-                echo "http://10.2.0.6:8081/repository/MyLab-RELEASE/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war"
+                echo "http://10.128.0.27:8081/repository/MyLab-RELEASE/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war"
             }
         }
         stage('Build image') {
       steps{
           sh '''#!/bin/bash
-          curl -u admin:123456 -L "http://10.2.0.6:8081/repository/MyLab-RELEASE/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war" -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT.war
+          curl -u admin:123456 -L "http://10.128.0.27:8081/repository/MyLab-RELEASE/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war" -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT.war
                 '''
         script {
           dockerImage = docker.build dockerimagename
@@ -76,7 +76,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'http://35.208.77.17:9001', registryCredential ) {
+          docker.withRegistry( 'https:nexus.vnext.vn:8082', registryCredential ) {
             dockerImage.push()
               dockerImage.push("${Version}")
           }
