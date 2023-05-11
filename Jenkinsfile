@@ -63,7 +63,7 @@ pipeline {
         stage('Build image') {
       steps{
           sh '''#!/bin/bash
-          curl -u admin:123456 -L "https://nexus.vnext.vn/repository/MyLab-RELEASE/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war" -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT.war
+          curl -u admin:123456 -L "https://nexus.vnext.vn/repository/MyLab-RELEASE/com/mylab/${ArtifactId}/${Version}/${ArtifactId}-${Version}.war" -H "accept: application/json" --output /var/jenkins_home/workspace/Lap3/ROOT1.war
                 '''
         script {
           dockerImage = docker.build dockerimagename
