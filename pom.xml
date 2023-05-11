@@ -4,7 +4,7 @@
   <groupId>com.mylab</groupId>
   <artifactId>tomcat</artifactId>
   <packaging>war</packaging>
-  <version>0.2.93</version>
+  <version>0.2.94</version>
   <name>MyLab</name>
   <url>http://maven.apache.org</url>
   <dependencies>
