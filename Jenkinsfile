@@ -76,7 +76,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'nexus.vnext.vn:8082', registryCredential ) {
+          docker.withRegistry( 'http://nexus.vnext.vn:8082', registryCredential ) {
             dockerImage.push()
               dockerImage.push("${Version}")
           }
