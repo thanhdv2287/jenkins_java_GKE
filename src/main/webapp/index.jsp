@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>dvthanh2's DevOps Labbbbbbaaaaaaaa</title>
+    <title>dvthanh2's DevOpss</title>
 
 
     <!-- Custom styles for this template -->
@@ -51,7 +51,7 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Hello111 dvthanh2 </h1>
+        <h1>Hello222 dvthanh2 </h1>
         <p>This is dvthanh2's CICD Lab</p>
         <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
         <p><a class="btn btn-primary btn-lg" role="button">Success!! more &raquo;</a></p>
