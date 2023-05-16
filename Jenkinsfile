@@ -21,13 +21,14 @@ pipeline {
                 sh 'mvn clean install package'
             }
         }
-        stage("Code Review") {
-          node {
+        stage("Code Review with SonaQube") {
+            agent any
+            steps {
               withSonarQubeEnv('Sonar-Qube') {
-                 sh 'mvn clean package sonar:sonar'
+                sh 'mvn clean package sonar:sonar'
               }
+            }
           }
-      }
         stage('Publish to Nexus') {
             steps { 
                 script {
