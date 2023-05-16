@@ -21,9 +21,9 @@ pipeline {
                 sh 'mvn clean install package'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing...123'
+        stage('Code Review') {
+            withSonarQubeEnv('Sonar-Qube'){
+            sh mvn "sonar:sonar"
             }
         }
         stage('Publish to Nexus') {
