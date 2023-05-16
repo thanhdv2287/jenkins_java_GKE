@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Code Review') {
             withSonarQubeEnv('Sonar-Qube'){
-            sh mvn "sonar:sonar"
+            sh "mvn sonar:sonar"
             }
         }
         stage('Publish to Nexus') {
